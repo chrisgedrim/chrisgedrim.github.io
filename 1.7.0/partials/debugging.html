@@ -1,0 +1,170 @@
+<h1 id="debugging-protractor-tests">Debugging Protractor Tests</h1>
+<p>End-to-end tests can be difficult to debug because they depend on an entire
+system, may depend on prior actions (such as log-in), and may change the
+state of the application they&#39;re testing. WebDriver tests in particular
+can be difficult to debug because of long error messages and the separation
+between the browser and the process running the test.</p>
+<h2 id="types-of-failure">Types of Failure</h2>
+<p>Protractor comes with examples of failing tests (<a href="https://github.com/angular/protractor/blob/master/debugging/failure_spec.js">failure_spec.js</a>).
+To run, start up the test application and a Selenium Server, and run the command below. Then look at all the stack traces.</p>
+<pre><code ng-non-bindable>protractor debugging/failureConf.js
+</code></pre><p>This test suite shows various types of failure:</p>
+<ul>
+<li>WebDriver throws an error - When a command cannot be completed, for example
+an element is not found.</li>
+<li>Protractor will fail when it cannot find the Angular library on a page.
+If your test needs to interact with a non-angular page, access the WebDriver
+instance directly with <code ng-non-bindable>browser.driver</code>.</li>
+<li>Expectation Failure - Shows what a normal expectation failure looks
+like.</li>
+</ul>
+<h2 id="timeouts">Timeouts</h2>
+<p>There are several ways that Protractor can time out. See the <a href="#/timeouts">Timeouts</a>
+reference for full documentation.</p>
+<h2 id="pausing-to-debug">Pausing to Debug</h2>
+<p>Protractor supports two methods for pausing to debug - <code ng-non-bindable>browser.pause()</code> and
+<code ng-non-bindable>browser.debugger()</code>. You probably want to use <code ng-non-bindable>browser.pause()</code>, unless you
+would like precise control over the node debugger.</p>
+<p><strong>Using pause</strong></p>
+<p>Insert <code ng-non-bindable>browser.pause()</code> into your test where you want to pause.</p>
+<pre><code class="lang-js">it(&#39;should fail to find a non-existent element&#39;, function() {
+  browser.get(&#39;app/index.html#/form&#39;);
+
+  browser.pause();
+
+  // This element doesn&#39;t exist, so this fails.
+  var nonExistant = element(by.binding(&#39;nopenopenope&#39;)).getText();
+});
+</code></pre>
+<p>Run your tests normally.</p>
+<p><code ng-non-bindable>protractor failureConf.js</code></p>
+<p>The test will pause execution after the scheduled navigation to <code ng-non-bindable>app/index.html#/form</code>
+but before trying to get text from the nonnexistant element. The terminal will
+print instructions for continuing or inspecting the application and a list of the
+currently pending tasks on the WebDriver control flow.</p>
+<pre><code ng-non-bindable>-- WebDriver control flow schedule
+ |- waiting for debugger to attach
+ |---    at [object Object].&lt;anonymous&gt; (failure_spec.js:13:13)
+ |- Protractor.waitForAngular()
+ |---    at [object Object].&lt;anonymous&gt; (failure_spec.js:16:59)
+wd-debug&gt;
+</code></pre><p>Enter <code ng-non-bindable>c</code> to move the test forward by one task.
+Enter <code ng-non-bindable>repl</code> to enter interactive mode. In interactive mode, you can send
+WebDriver commands to your browser. The resulting value or error will
+be reported to the terminal.</p>
+<pre><code ng-non-bindable>&gt; element(by.binding(&#39;nopenopenope&#39;)).getText()
+NoSuchElementError: No element found using locator: by.binding(&quot;nopenopenope&quot;)
+&gt;
+&gt; element(by.binding(&#39;user&#39;)).getText()
+&#39;Anon&#39;
+</code></pre><p>While the test is paused you may also interact with the browser. Note that
+if you open the Chrome Dev Tools, you must close them before continuing
+the test because ChromeDriver cannot operate when the Dev Tools are open.</p>
+<p>When you finish debugging, exit by pressing <code ng-non-bindable>Ctrl-C</code>. Your tests will continue
+where they left off, using the same browser.</p>
+<p><strong>Using debugger</strong></p>
+<p>Insert <code ng-non-bindable>browser.debugger();</code> into your test where you want to break:</p>
+<pre><code class="lang-javascript">it(&#39;should fail to find a non-existent element&#39;, function() {
+  browser.get(&#39;app/index.html#/form&#39;);
+
+  // Run this statement before the line which fails. If protractor is run
+  // with the debugger (protractor debug &lt;...&gt;), the test
+  // will pause after loading the webpage but before trying to find the
+  // element.
+  browser.debugger();
+
+  // This element doesn&#39;t exist, so this fails.
+  var nonExistant = element(by.binding(&#39;nopenopenope&#39;)).getText();
+});
+</code></pre>
+<p>Then run the test <em>in debug mode</em>:</p>
+<pre><code ng-non-bindable>protractor debug debugging/failureConf.js
+</code></pre><p>This uses the <a href="http://nodejs.org/api/debugger.html">node debugger</a>. Enter
+<code ng-non-bindable>c</code> to start execution and continue after the breakpoint.</p>
+<p><code ng-non-bindable>browser.debugger();</code> is different from from node&#39;s <code ng-non-bindable>debugger;</code> statement because
+it adds a breakpoint task asynchronous queue. This means the example above will
+pause after the <code ng-non-bindable>get</code> statement has been executing. Using <code ng-non-bindable>debugger;</code>
+pauses the test after the get command is scheduled but has not yet
+been executed.</p>
+<p>Protractor&#39;s <code ng-non-bindable>debugger()</code> method works by scheduling a node debug breakpoint
+on the control flow.</p>
+<p>When <code ng-non-bindable>debugger()</code> is called, it also inserts all the client side scripts
+from Protractor into the browser as <code ng-non-bindable>window.clientSideScripts</code>. They can be
+used from the browser&#39;s console.</p>
+<pre><code class="lang-javascript">// In the browser console (e.g. from Chrome Dev Tools)
+&gt; window.clientSideScripts.findInputs(&#39;username&#39;);
+// Should return the input element with model &#39;username&#39;.
+
+// You can also limit the scope of the locator
+&gt; window.clientSideScripts.findInputs(&#39;username&#39;, document.getElementById(&#39;#myEl&#39;));
+</code></pre>
+<h2 id="setting-up-webstorm-for-debugging">Setting Up WebStorm for Debugging</h2>
+<p>To set up WebStorm for Protractor, do the following:</p>
+<ol>
+<li>Open the Run/Debug Configurations dialog</li>
+<li>Add new Node.js configuration.</li>
+<li>On the Configuration tab set:<ul>
+<li><strong>Node Interpreter</strong>: path to node executable</li>
+<li><strong>Working directory</strong>: your project base path</li>
+<li><strong>JavaScript file</strong>: path to Protractor cli.js file (e.g. <em>node_modules\protractor\lib\cli.js</em>)</li>
+<li><strong>Application parameters</strong>: path to your Protractor configuration file (e.g.
+<em>protractorConfig.js</em>)</li>
+</ul>
+</li>
+<li>Click OK, place some breakpoints, and start debugging.</li>
+</ol>
+<h2 id="testing-out-protractor-interactively">Testing Out Protractor Interactively</h2>
+<p>When debugging or first writing test suites, you may find it helpful to
+try out Protractor commands without starting up the entire test suite. You can
+do this with the element explorer.</p>
+<p>To run element explorer, simply run protractor as you normally would, but pass in
+the flag --elementExplorer:</p>
+<pre><code ng-non-bindable>protractor --elementExplorer
+</code></pre><p>This will load up the URL on WebDriver and put the terminal into a REPL loop.
+You will see a &gt; prompt. The <code ng-non-bindable>browser</code>, <code ng-non-bindable>element</code> and <code ng-non-bindable>protractor</code> variables will
+be available. Enter a command such as:</p>
+<pre><code ng-non-bindable>&gt; browser.get(&#39;http://www.angularjs.org&#39;)
+</code></pre><p>or</p>
+<pre><code ng-non-bindable>&gt; element(by.id(&#39;foobar&#39;)).getText()
+</code></pre><p>Typing tab at a blank prompt will fill in a suggestion for finding
+elements. You can also use the <code ng-non-bindable>list(locator)</code> command to list all elements
+matching a locator.</p>
+<p>Element explorer will start chrome by default. However, you can specify
+another browser, change browser settings, or specify any other config that you
+normally would with your protractor test. To do this, pass configs to 
+protractor like you normally would, 
+but with the <code ng-non-bindable>--elementExplorer</code> flag set:</p>
+<pre><code ng-non-bindable>protractor [configFile] [options] --elementExplorer
+</code></pre><p>For example, to connect to ChromeDriver directly, use</p>
+<pre><code ng-non-bindable>protractor --directConnect --elementExplorer
+</code></pre><p>Element explore will ignore your specs, not set up your framework (e.g. jasmine, 
+mocha, cucumber), and only allow you to pass in 1 capability, but will honor
+every other parameter in your config.</p>
+<p>Note <code ng-non-bindable>baseUrl</code> is used here as the initial page, i.e. element explorer will try 
+to navigate to <code ng-non-bindable>baseUrl</code> automatically on start.</p>
+<h2 id="taking-screenshots">Taking Screenshots</h2>
+<p>WebDriver can snap a screenshot with <code ng-non-bindable>browser.takeScreenshot()</code>. This can be a
+good way to help debug tests, especially for tests that run on a continuous integration
+server. The method returns a promise which will resolve to the screenshot as a
+base-64 encoded PNG.</p>
+<p>Sample usage:</p>
+<pre><code class="lang-javascript">// at the top of the test spec:
+var fs = require(&#39;fs&#39;);
+
+// ... other code
+
+// abstract writing screen shot to a file
+function writeScreenShot(data, filename) {
+    var stream = fs.createWriteStream(filename);
+
+    stream.write(new Buffer(data, &#39;base64&#39;));
+    stream.end();
+}
+
+// ...
+
+// within a test:
+browser.takeScreenshot().then(function (png) {
+    writeScreenShot(png, &#39;exception.png&#39;);
+});
+</code></pre>

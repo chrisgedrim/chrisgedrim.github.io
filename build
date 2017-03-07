@@ -1,0 +1,14 @@
+BASE_DIR=`pwd`
+cd $1
+
+for TAG in `git tag | grep -E '^[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}$'`; do
+  git checkout $TAG
+  cd website
+  npm install
+  npm run build
+  mkdir "$BASE_DIR/$TAG"
+  mv build/* "$BASE_DIR/$TAG"
+  rm -rf node_modules bower_components
+  cd ..
+  git reset --hard HEAD
+done

@@ -1,0 +1,129 @@
+<h1 id="faq">FAQ</h1>
+<h2 id="my-tests-time-out-in-protractor-but-everything-s-working-fine-when-running-manually-what-s-up-" class="anchored"><div><a href="#{{path}}#my-tests-time-out-in-protractor-but-everything-s-working-fine-when-running-manually-what-s-up-">&#x1f517;</a>My tests time out in Protractor, but everything&#39;s working fine when running manually. What&#39;s up?</div></h2>
+<p>There are several ways that Protractor can time out - see the <a href="#/timeouts">Timeouts</a>
+reference for full documentation.</p>
+<h2 id="what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-" class="anchored"><div><a href="#{{path}}#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-">&#x1f517;</a>What&#39;s the difference between Karma and Protractor? When do I use which?</div></h2>
+<p><a href="http://karma-runner.github.io">Karma</a> is a great tool for unit testing, and Protractor is intended for
+end to end or integration testing. This means that small tests for the logic
+of your individual controllers, directives, and services should be run using
+Karma. Big tests in which you have a running instance of your entire application
+should be run using Protractor. Protractor is intended to run tests from a
+user&#39;s point of view - if your test could be written down as instructions
+for a human interacting with your application, it should be an end to end test
+written with Protractor.</p>
+<p>Here&#39;s a <a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">great blog post</a>
+with more info.</p>
+<h2 id="angular-can-t-be-found-on-my-page" class="anchored"><div><a href="#{{path}}#angular-can-t-be-found-on-my-page">&#x1f517;</a>Angular can&#39;t be found on my page</div></h2>
+<p>Protractor supports angular 1.0.6/1.1.4 and higher - check that your version of Angular is upgraded.</p>
+<p>The <code ng-non-bindable>angular</code> variable is expected to be available in the global context. Try opening chrome devtools or firefox and see if <code ng-non-bindable>angular</code> is defined.</p>
+<h2 id="how-do-i-deal-with-my-log-in-page-" class="anchored"><div><a href="#{{path}}#how-do-i-deal-with-my-log-in-page-">&#x1f517;</a>How do I deal with my log-in page?</div></h2>
+<p>If your app needs log-in, there are a couple ways to deal with it. If your login
+page is not written with Angular, you&#39;ll need to interact with it via 
+unwrapped webdriver, which can be accessed like <code ng-non-bindable>browser.driver.get()</code>. </p>
+<p>You can put your log-in code into an <code ng-non-bindable>onPrepare</code> function, which will be run
+once before any of your tests. See this example (<a href="https://github.com/angular/protractor/blob/master/spec/withLoginConf.js">withLoginConf.js</a>)</p>
+<h2 id="which-browsers-are-supported-" class="anchored"><div><a href="#{{path}}#which-browsers-are-supported-">&#x1f517;</a>Which browsers are supported?</div></h2>
+<p>The last two major versions of Chrome, Firefox, IE, and Safari. See details at <a href="#/browser-setup">Setting Up the Browser</a> and <a href="#/browser-support">Browser Support</a>.</p>
+<h2 id="the-result-of-gettext-from-an-input-element-is-always-empty" class="anchored"><div><a href="#{{path}}#the-result-of-gettext-from-an-input-element-is-always-empty">&#x1f517;</a>The result of <code ng-non-bindable>getText</code> from an input element is always empty</div></h2>
+<p>This is a <a href="http://grokbase.com/t/gg/webdriver/12bcmvwhcm/extarcting-text-from-the-input-field">webdriver quirk</a>.
+<code ng-non-bindable>&lt;input&gt;</code> and <code ng-non-bindable>&lt;textarea&gt;</code> elements always have
+empty <code ng-non-bindable>getText</code> values. Instead, try <code ng-non-bindable>element.getAttribute(&#39;value&#39;)</code>.</p>
+<h2 id="how-can-i-interact-directly-with-the-javascript-running-in-my-app-" class="anchored"><div><a href="#{{path}}#how-can-i-interact-directly-with-the-javascript-running-in-my-app-">&#x1f517;</a>How can I interact directly with the JavaScript running in my app?</div></h2>
+<p>In general, the design of WebDriver tests is to interact with the page as a user would, so it gets a little tricky if you want to interact with the JavaScript directly. You should avoid it unless you have a good reason. However, there are ways of doing it.</p>
+<p>You can use the <code ng-non-bindable>evaluate</code> function on a WebElement to get the value of an Angular expression in the scope of that element. e.g.</p>
+<pre><code class="lang-javascript">element(by.css(&#39;.foo&#39;)).evaluate(&#39;bar&#39;)
+</code></pre>
+<p>would return whatever <code ng-non-bindable>{{bar}}</code> is in the scope of the element with class &#39;foo&#39;.</p>
+<p>You can also execute arbitrary JavaScript in the browser with:</p>
+<pre><code class="lang-javascript">browser.executeScript(&#39;your script as a string&#39;);
+</code></pre>
+<p>You can also pass a regular JavaScript function into <code ng-non-bindable>executeScript()</code>, for example:</p>
+<pre><code class="lang-javascript">function getAngularVersion() {
+  return window.angular.version.full;
+}
+
+browser.executeScript(getAngularVersion).then(function (version) {
+  console.log(version);
+});
+</code></pre>
+<h2 id="how-can-i-get-hold-of-the-browser-s-console-" class="anchored"><div><a href="#{{path}}#how-can-i-get-hold-of-the-browser-s-console-">&#x1f517;</a>How can I get hold of the browser&#39;s console?</div></h2>
+<p>In your test:</p>
+<pre><code class="lang-javascript">browser.manage().logs().get(&#39;browser&#39;).then(function(browserLog) {
+  console.log(&#39;log: &#39; + require(&#39;util&#39;).inspect(browserLog));
+});
+</code></pre>
+<p>This will output logs from the browser console. Note that logs below the set logging level will be ignored. The default level is warnings and above. To change, add a <code ng-non-bindable>loggingPrefs</code> object to your capabilities, as described <a href="https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities#loggingpreferences-json-object">in the DesiredCapabilities docs</a>.</p>
+<p>See an example (<a href="https://github.com/juliemr/protractor-demo/blob/master/howtos/browserlog/spec.js">spec.js</a>) of using this API to fail tests if the console has errors.</p>
+<h2 id="how-can-i-get-screenshots-of-failures-" class="anchored"><div><a href="#{{path}}#how-can-i-get-screenshots-of-failures-">&#x1f517;</a>How can I get screenshots of failures?</div></h2>
+<p>First, this is how you can take a screenshot:</p>
+<pre><code class="lang-javascript">browser.takeScreenshot().then(function(png) {
+  var stream = fs.createWriteStream(&quot;/tmp/screenshot.png&quot;);
+  stream.write(new Buffer(png, &#39;base64&#39;));
+  stream.end();
+});
+</code></pre>
+<p>The method to take a screenshot automatically on failure would depend on the type of failure.</p>
+<ul>
+<li>For failures of entire specs (such as timeout or an expectation within the spec failed), you can add a reporter as below:</li>
+</ul>
+<pre><code class="lang-javascript">// Note: this is using Jasmine 2 reporter syntax.
+jasmine.getEnv().addReporter(new function() {
+  this.specDone = function(result) {
+    if (result.failedExpectations.length &gt;0) {
+      // take screenshot
+    }
+  };
+});
+</code></pre>
+<p>Note, you can also choose to take a screenshot in <code ng-non-bindable>afterEach</code>. However, because Jasmine does not execute <code ng-non-bindable>afterEach</code> for timeouts, those would not produce screenshots</p>
+<ul>
+<li>For failures of individual expectations, you can override jasmine&#39;s addMatcherResult/addExpectationResult function as such:</li>
+</ul>
+<pre><code class="lang-javascript">// Jasmine 2
+var originalAddExpectationResult = jasmine.Spec.prototype.addExpectationResult;
+jasmine.Spec.prototype.addExpectationResult = function() {
+  if (!arguments[0]) {
+    // take screenshot
+    // this.description and arguments[1].message can be useful to constructing the filename.
+  }
+  return originalAddExpectationResult.apply(this, arguments);
+};
+</code></pre>
+<p><a href="https://github.com/juliemr/protractor-demo/blob/master/howtos/screenshot/screenshotReporter.js">See an example of taking screenshot on spec failures</a>.</p>
+<h2 id="how-do-i-produce-an-xml-report-of-my-test-results-" class="anchored"><div><a href="#{{path}}#how-do-i-produce-an-xml-report-of-my-test-results-">&#x1f517;</a>How do I produce an XML report of my test results?</div></h2>
+<p>You can use the npm package jasmine-reporters@^2.0.0 and add a JUnit XML Reporter in the <code ng-non-bindable>onPrepare</code> block. This would look something like:</p>
+<pre><code ng-non-bindable>var jasmineReporters = require(&#39;jasmine-reporters&#39;);
+jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+    consolidateAll: true,
+    savePath: &#39;testresults&#39;,
+    filePrefix: &#39;reportXMLoutput&#39;
+}));
+</code></pre><h2 id="how-can-i-catch-errors-such-as-elementnotfound-" class="anchored"><div><a href="#{{path}}#how-can-i-catch-errors-such-as-elementnotfound-">&#x1f517;</a>How can I catch errors such as ElementNotFound?</div></h2>
+<p>WebDriver throws errors when commands cannot be completed - e.g. not being able to click on an element which is obscured by another element. If you need to retry these actions, try using <a href="https://github.com/juliemr/webdriverjs-retry">webdriverjs-retry</a>. If you would just like to catch the error, do so like this</p>
+<pre><code class="lang-javascript">elm.click().then(function() { /* passing case */}, function(err) { /* error handling here */})
+</code></pre>
+<h2 id="how-can-i-test-file-uploads-" class="anchored"><div><a href="#{{path}}#how-can-i-test-file-uploads-">&#x1f517;</a>How can I test file uploads?</div></h2>
+<p>Via Webdriver, you can just send the absolute file path to the input with type=file. <a href="http://stackoverflow.com/questions/21305298/how-to-upload-file-in-angularjs-e2e-protractor-testing/21314337#21314337">See this example</a>.</p>
+<p>If you need to test file upload on a remote server (such as Sauce Labs), <a href="https://saucelabs.com/resources/articles/selenium-file-upload">you need to set a remote file detector</a>. You can do this via <code ng-non-bindable>browser.setFileDetector()</code>, and you&#39;ll need access to the <code ng-non-bindable>selenium-webdriver</code> node module.</p>
+<pre><code class="lang-js">var remote = require(&#39;selenium-webdriver/remote&#39;);
+browser.setFileDetector(new remote.FileDetector());
+</code></pre>
+<h2 id="why-is-browser-debugger-not-pausing-the-test-" class="anchored"><div><a href="#{{path}}#why-is-browser-debugger-not-pausing-the-test-">&#x1f517;</a>Why is browser.debugger(); not pausing the test?</div></h2>
+<p>The most likely reason is that you are not running the test in debug mode. To do this you run: <code ng-non-bindable>protractor debug</code> followed by the path to your protractor configuration file.</p>
+<h2 id="i-get-an-error-page-reload-detected-during-async-script-what-does-this-mean-" class="anchored"><div><a href="#{{path}}#i-get-an-error-page-reload-detected-during-async-script-what-does-this-mean-">&#x1f517;</a>I get an error: Page reload detected during async script. What does this mean?</div></h2>
+<p>This means that there was a navigation or reload event while a command was pending
+on the browser. Usually, this is because a click action or navigation resulted
+in a page load. Protractor is trying to wait for Angular to become stable,
+but it&#39;s interrupted by the reload.</p>
+<p>You may need to insert a <code ng-non-bindable>browser.wait</code> condition to make sure the load
+is complete before continuing.</p>
+<h2 id="how-do-i-switch-off-an-option-in-the-cli-" class="anchored"><div><a href="#{{path}}#how-do-i-switch-off-an-option-in-the-cli-">&#x1f517;</a>How do I switch off an option in the CLI?</div></h2>
+<p>i.e. <code ng-non-bindable>webdriver-manager update --chrome=false</code> does not work. 
+This has to do with the way <code ng-non-bindable>optimist</code> parses command line args. In order to pass a false value, do one of the following:</p>
+<p>1) <code ng-non-bindable>webdriver-manager update --chrome=0</code></p>
+<p>2) <code ng-non-bindable>webdriver-manager update --no-chrome</code> (see <a href="https://github.com/substack/node-optimist#negate-fields">https://github.com/substack/node-optimist#negate-fields</a>)</p>
+<h2 id="why-does-protractor-fail-when-i-decorate-timeout-" class="anchored"><div><a href="#{{path}}#why-does-protractor-fail-when-i-decorate-timeout-">&#x1f517;</a>Why does Protractor fail when I decorate $timeout?</div></h2>
+<p>Protractor tracks outstanding $timeouts by default, and reports them in the error message if Protractor fails to synchronize with Angular in time.</p>
+<p>However, in order to do this Protractor needs to decorate $timeout. This means if your app decorates $timeout, you must turn off this behavior for Protractor. To do so pass in the &#39;untrackOutstandingTimeouts&#39; flag. </p>
+<h2 id="i-still-have-a-question" class="anchored"><div><a href="#{{path}}#i-still-have-a-question">&#x1f517;</a>I still have a question</div></h2>
+<p>Please see our <a href="https://github.com/angular/protractor/blob/master/CONTRIBUTING.md#questions">Contributing Guidelines</a> for questions and issues.</p>

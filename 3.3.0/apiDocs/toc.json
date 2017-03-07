@@ -1,0 +1,2114 @@
+{
+  "version": "3.3.0",
+  "items": [
+  {
+    "description": "<p>A collection of factory functions for creating <code ng-non-bindable>webdriver.Locator</code>\ninstances.</p>\n",
+    "fileName": "locators",
+    "name": "webdriver.By",
+    "returnString": ""
+  },
+  {
+    "description": "<p>Locates elements that have a specific class name. The returned locator\nis equivalent to searching for elements with the CSS selector &quot;.clazz&quot;.</p>\n<br />See [<code ng-non-bindable>http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;2011&#x2F;WD-html5-20110525&#x2F;elements.html#classes</code>](http://www.w3.org/TR/2011/WD-html5-20110525/elements.html#classes)<br />See [<code ng-non-bindable>http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;CSS2&#x2F;selector.html#class-html</code>](http://www.w3.org/TR/CSS2/selector.html#class-html)",
+    "example": "// Returns the web element for dog\nvar dog = browser.findElement(by.className('dog'));\nexpect(dog.getText()).toBe('Dog');",
+    "fileName": "locators",
+    "htmlView": "&lt;ul class=&quot;pet&quot;&gt;\n  &lt;li class=&quot;dog&quot;&gt;Dog&lt;/li&gt;\n  &lt;li class=&quot;cat&quot;&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.By.className",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The class name to search for.",
+        "startingLine": 40,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "className",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 41,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<ul class=\"pet\">\n  <li class=\"dog\">Dog</li>\n  <li class=\"cat\">Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Locates elements using a CSS selector. For browsers that do not support\nCSS selectors, WebDriver implementations may return an\ninvalid selector error. An\nimplementation may, however, emulate the CSS selector API.</p>\n<br />See [<code ng-non-bindable>http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;CSS2&#x2F;selector.html</code>](http://www.w3.org/TR/CSS2/selector.html)",
+    "example": "// Returns the web element for cat\nvar cat = browser.findElement(by.css('.pet .cat'));\nexpect(cat.getText()).toBe('Cat');",
+    "fileName": "locators",
+    "htmlView": "&lt;ul class=&quot;pet&quot;&gt;\n  &lt;li class=&quot;dog&quot;&gt;Dog&lt;/li&gt;\n  &lt;li class=&quot;cat&quot;&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.By.css",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The CSS selector to use.",
+        "startingLine": 65,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "selector",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 66,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<ul class=\"pet\">\n  <li class=\"dog\">Dog</li>\n  <li class=\"cat\">Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Locates an element by its ID.</p>\n",
+    "example": "// Returns the web element for dog\nvar dog = browser.findElement(by.id('dog_id'));\nexpect(dog.getText()).toBe('Dog');",
+    "fileName": "locators",
+    "htmlView": "&lt;ul id=&quot;pet_id&quot;&gt;\n  &lt;li id=&quot;dog_id&quot;&gt;Dog&lt;/li&gt;\n  &lt;li id=&quot;cat_id&quot;&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.By.id",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The ID to search for.",
+        "startingLine": 86,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "id",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 87,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<ul id=\"pet_id\">\n  <li id=\"dog_id\">Dog</li>\n  <li id=\"cat_id\">Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Locates link elements whose [visible text](webdriver.WebElement.prototype.getText) matches the given string.</p>\n",
+    "example": "expect(element(by.linkText('Google')).getTagName()).toBe('a');",
+    "fileName": "locators",
+    "htmlView": "&lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;",
+    "name": "webdriver.By.linkText",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The link text to search for.",
+        "startingLine": 102,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "text",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 103,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<a href=\"http://www.google.com\">Google</a>"
+  },
+  {
+    "alias": "by.js(expression)",
+    "description": "<p>Locates an elements by evaluating a JavaScript expression, which may\nbe either a function or a string. Like\n<code ng-non-bindable>webdriver.WebDriver.executeScript</code>, the expression is evaluated\nin the context of the page and cannot access variables from\nthe test file.</p>\n<p>The result of this expression must be an element or list of elements.</p>\n",
+    "example": "var wideElement = element(by.js(function() {\n  var spans = document.querySelectorAll('span');\n  for (var i = 0; i < spans.length; ++i) {\n    if (spans[i].offsetWidth > 100) {\n     return spans[i];\n    }\n  }\n}));\nexpect(wideElement.getText()).toEqual('Three');",
+    "fileName": "locators",
+    "htmlView": "&lt;span class=&quot;small&quot;&gt;One&lt;/span&gt;\n&lt;span class=&quot;medium&quot;&gt;Two&lt;/span&gt;\n&lt;span class=&quot;large&quot;&gt;Three&lt;/span&gt;",
+    "name": "webdriver.By.js",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The script to execute.",
+        "startingLine": 134,
+        "typeExpression": "!(string|Function)",
+        "type": {
+          "type": "TypeUnion",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "string"
+            },
+            {
+              "type": "FunctionType",
+              "params": []
+            }
+          ],
+          "nullable": false
+        },
+        "typeList": [
+          "string",
+          "function()"
+        ],
+        "name": "script",
+        "paramString": "!(string&#124;Function)"
+      },
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The arguments to pass to the script.",
+        "startingLine": 135,
+        "typeExpression": "...*",
+        "type": {
+          "type": "AllLiteral",
+          "repeatable": true
+        },
+        "typeList": [
+          "*"
+        ],
+        "name": "var_args",
+        "paramString": "...*"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "",
+      "startingLine": 136,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<span class=\"small\">One</span>\n<span class=\"medium\">Two</span>\n<span class=\"large\">Three</span>"
+  },
+  {
+    "description": "<p>Locates elements whose <code ng-non-bindable>name</code> attribute has the given value.</p>\n",
+    "example": "// Returns the web element for dog\nvar dog = browser.findElement(by.name('dog_name'));\nexpect(dog.getText()).toBe('Dog');",
+    "fileName": "locators",
+    "htmlView": "&lt;ul&gt;\n  &lt;li name=&quot;dog_name&quot;&gt;Dog&lt;/li&gt;\n  &lt;li name=&quot;cat_name&quot;&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.By.name",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The name attribute to search for.",
+        "startingLine": 155,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "name",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 156,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<ul>\n  <li name=\"dog_name\">Dog</li>\n  <li name=\"cat_name\">Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Locates link elements whose [visible text](webdriver.WebElement.prototype.getText) contains the given substring.</p>\n",
+    "example": "// Returns the 'a' web element for doge meme and navigate to that link\nvar doge = browser.findElement(by.partialLinkText('Doge'));\ndoge.click();",
+    "fileName": "locators",
+    "htmlView": "&lt;ul&gt;\n  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Doge_(meme)&quot;&gt;Doge meme&lt;/a&gt;&lt;/li&gt;\n  &lt;li&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.By.partialLinkText",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The substring to check for in a link's visible text.",
+        "startingLine": 176,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "text",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 177,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<ul>\n  <li><a href=\"https://en.wikipedia.org/wiki/Doge_(meme)\">Doge meme</a></li>\n  <li>Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Locates elements with a given tag name. The returned locator is\nequivalent to using the\n<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Element.getElementsByTagName\">getElementsByTagName</a>\nDOM function.</p>\n<br />See [<code ng-non-bindable>http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;REC-DOM-Level-1&#x2F;level-one-core.html</code>](http://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html)",
+    "example": "expect(element(by.tagName('a')).getText()).toBe('Google');",
+    "fileName": "locators",
+    "htmlView": "&lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;",
+    "name": "webdriver.By.tagName",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The substring to check for in a link's visible text.",
+        "startingLine": 195,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "text",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 196,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<a href=\"http://www.google.com\">Google</a>"
+  },
+  {
+    "description": "<p>Locates elements matching a XPath selector. Care should be taken when\nusing an XPath selector with a [<code ng-non-bindable>webdriver.WebElement</code>](webdriver.WebElement) as WebDriver\nwill respect the context in the specified in the selector. For example,\ngiven the selector <code ng-non-bindable>&amp;quot;&#x2F;&#x2F;div&amp;quot;</code>, WebDriver will search from the\ndocument root regardless of whether the locator was used with a\nWebElement.</p>\n<br />See [<code ng-non-bindable>http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xpath&#x2F;</code>](http://www.w3.org/TR/xpath/)",
+    "example": "// Returns the 'a' element for doge meme\nvar li = browser.findElement(by.xpath('//ul/li/a'));\nexpect(li.getText()).toBe('Doge meme');",
+    "fileName": "locators",
+    "htmlView": "&lt;ul&gt;\n  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Doge_(meme)&quot;&gt;Doge meme&lt;/a&gt;&lt;/li&gt;\n  &lt;li&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.By.xpath",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The XPath selector to use.",
+        "startingLine": 221,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "xpath",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The new locator.",
+      "startingLine": 222,
+      "typeExpression": "!webdriver.Locator",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.Locator",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.Locator"
+      ]
+    },
+    "returnString": "!webdriver.Locator",
+    "view": "<ul>\n  <li><a href=\"https://en.wikipedia.org/wiki/Doge_(meme)\">Doge meme</a></li>\n  <li>Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Protractor&#39;s browser object is a wrapper for selenium-webdriver WebDriver.\nA full list of all functions available on WebDriver can be found\nin the selenium-webdriver\n<a href=\"http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebDriver.html\">documentation</a></p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver",
+    "returnString": ""
+  },
+  {
+    "description": "<p>Creates a new action sequence using this driver. The sequence will not be\nscheduled for execution until <code ng-non-bindable>webdriver.ActionSequence#perform</code> is\ncalled.</p>\n<p>See <a href=\"http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/actions_exports_ActionSequence.html\">http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/actions_exports_ActionSequence.html</a>\nfor more examples of action sequences.</p>\n",
+    "example": "browser.actions().\n    mouseDown(element1).\n    mouseMove(element2).\n    mouseUp().\n    perform();",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver.prototype.actions",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A new action sequence for this instance.",
+      "startingLine": 61,
+      "typeExpression": "!webdriver.ActionSequence",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.ActionSequence",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.ActionSequence"
+      ]
+    },
+    "returnString": "!webdriver.ActionSequence"
+  },
+  {
+    "description": "<p>Schedules a command to wait for a condition to hold. </p>\n<p>This function may be used to block the command flow on the resolution\nof a <code ng-non-bindable>promise</code>. When given a promise, the\ncommand will simply wait for its resolution before completing. A timeout may\nbe provided to fail the command if the promise does not resolve before the\ntimeout expires.</p>\n<p>See also <code ng-non-bindable>ExpectedConditions</code></p>\n<p><em>Example:</em> Suppose you have a function, <code>startTestServer</code>, that returns a\npromise for when a server is ready for requests. You can block a <code>WebDriver</code>\nclient on this promise with:</p>\n",
+    "example": "var started = startTestServer();\nbrowser.wait(started, 5 * 1000, 'Server should start within 5 seconds');\nbrowser.get(getServerUrl());",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver.prototype.wait",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The condition to wait on, defined as a promise, condition object, or  a function to evaluate as a condition.",
+        "startingLine": 85,
+        "typeExpression": "!(webdriver.promise.Promise<T>|\n          webdriver.until.Condition<T>|\n          function(!webdriver.WebDriver): T)",
+        "type": {
+          "type": "TypeUnion",
+          "elements": [
+            {
+              "type": "TypeApplication",
+              "expression": {
+                "type": "NameExpression",
+                "name": "webdriver.promise.Promise"
+              },
+              "applications": [
+                {
+                  "type": "NameExpression",
+                  "name": "T"
+                }
+              ]
+            },
+            {
+              "type": "TypeApplication",
+              "expression": {
+                "type": "NameExpression",
+                "name": "webdriver.until.Condition"
+              },
+              "applications": [
+                {
+                  "type": "NameExpression",
+                  "name": "T"
+                }
+              ]
+            },
+            {
+              "type": "FunctionType",
+              "params": [
+                {
+                  "type": "NameExpression",
+                  "name": "webdriver.WebDriver",
+                  "nullable": false
+                }
+              ],
+              "result": {
+                "type": "NameExpression",
+                "name": "T"
+              }
+            }
+          ],
+          "nullable": false
+        },
+        "typeList": [
+          "webdriver.promise.Promise.<T>",
+          "webdriver.until.Condition.<T>",
+          "function(!webdriver.WebDriver): T"
+        ],
+        "name": "condition",
+        "paramString": "!(webdriver.promise.Promise&lt;T&gt;&#124;\n          webdriver.until.Condition&lt;T&gt;&#124;\n          function(!webdriver.WebDriver): T)"
+      },
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "How long to wait for the condition to be true.",
+        "startingLine": 90,
+        "typeExpression": "number=",
+        "type": {
+          "type": "NameExpression",
+          "name": "number",
+          "optional": true
+        },
+        "typeList": [
+          "number"
+        ],
+        "optional": true,
+        "name": "opt_timeout",
+        "paramString": "number="
+      },
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "An optional message to use if the wait times out.",
+        "startingLine": 91,
+        "typeExpression": "string=",
+        "type": {
+          "type": "NameExpression",
+          "name": "string",
+          "optional": true
+        },
+        "typeList": [
+          "string"
+        ],
+        "optional": true,
+        "name": "opt_message",
+        "paramString": "string="
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be fulfilled with the first truthy value returned by the condition function, or rejected if the condition times out.",
+      "startingLine": 93,
+      "typeExpression": "!webdriver.promise.Promise<T>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "T"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise<T>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise&lt;T&gt;"
+  },
+  {
+    "description": "<p>Schedules a command to make the driver sleep for the given amount of time.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver.prototype.sleep",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The amount of time, in milliseconds, to sleep.",
+        "startingLine": 101,
+        "typeExpression": "number",
+        "type": {
+          "type": "NameExpression",
+          "name": "number"
+        },
+        "typeList": [
+          "number"
+        ],
+        "name": "ms",
+        "paramString": "number"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved when the sleep has finished.",
+      "startingLine": 102,
+      "typeExpression": "!webdriver.promise.Promise.<void>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "void",
+            "reservedWord": true
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<void>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;void&gt;"
+  },
+  {
+    "description": "<p>Schedules a command to retrieve the URL of the current page.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver.prototype.getCurrentUrl",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the current URL.",
+      "startingLine": 109,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;"
+  },
+  {
+    "description": "<p>Schedules a command to retrieve the current page&#39;s title.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver.prototype.getTitle",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the current page's title.",
+      "startingLine": 116,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;"
+  },
+  {
+    "description": "<p>Schedule a command to take a screenshot. The driver makes a best effort to\nreturn a screenshot of the following, in order of preference:</p>\n<ol>\n  <li>Entire page\n  <li>Current window\n  <li>Visible portion of the current frame\n  <li>The screenshot of the entire display containing the browser\n</ol>",
+    "fileName": "webdriver",
+    "name": "webdriver.WebDriver.prototype.takeScreenshot",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved to the screenshot as a base-64 encoded PNG.",
+      "startingLine": 131,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;"
+  },
+  {
+    "description": "<p>Protractor&#39;s ElementFinders are wrappers for selenium-webdriver WebElement.\nA full list of all functions available on WebElement can be found\nin the selenium-webdriver\n<a href=\"http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebElement.html\">documentation</a>.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebElement",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The webdriver driver or the parent WebDriver instance for this element.",
+        "startingLine": 150,
+        "typeExpression": "!webdriver.WebDriver",
+        "type": {
+          "type": "NameExpression",
+          "name": "webdriver.WebDriver",
+          "nullable": false
+        },
+        "typeList": [
+          "webdriver.WebDriver"
+        ],
+        "name": "driver",
+        "paramString": "&#33;[webdriver.WebDriver](webdriver.WebDriver)"
+      },
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The server-assigned opaque ID for the underlying DOM element.",
+        "startingLine": 152,
+        "typeExpression": "!(webdriver.promise.Promise.<webdriver.WebElement.Id>|\n          webdriver.WebElement.Id)",
+        "type": {
+          "type": "TypeUnion",
+          "elements": [
+            {
+              "type": "TypeApplication",
+              "expression": {
+                "type": "NameExpression",
+                "name": "webdriver.promise.Promise"
+              },
+              "applications": [
+                {
+                  "type": "NameExpression",
+                  "name": "webdriver.WebElement.Id"
+                }
+              ]
+            },
+            {
+              "type": "NameExpression",
+              "name": "webdriver.WebElement.Id"
+            }
+          ],
+          "nullable": false
+        },
+        "typeList": [
+          "webdriver.promise.Promise.<webdriver.WebElement.Id>",
+          "webdriver.WebElement.Id"
+        ],
+        "name": "id",
+        "paramString": "!(webdriver.promise.Promise.&lt;webdriver.WebElement.Id&gt;&#124;\n          webdriver.WebElement.Id)"
+      }
+    ],
+    "returnString": ""
+  },
+  {
+    "description": "<p>Gets the parent web element of this web element.</p>\n",
+    "example": "// Using getDriver to find the parent web element to find the cat li\nvar liDog = element(by.css('.dog')).getWebElement();\nvar liCat = liDog.getDriver().findElement(by.css('.cat'));",
+    "fileName": "webdriver",
+    "htmlView": "&lt;ul class=&quot;pet&quot;&gt;\n &lt;li class=&quot;dog&quot;&gt;Dog&lt;/li&gt;\n &lt;li class=&quot;cat&quot;&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.WebElement.prototype.getDriver",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "The parent driver for this instance.",
+      "startingLine": 173,
+      "typeExpression": "!webdriver.WebDriver",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.WebDriver",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.WebDriver"
+      ]
+    },
+    "returnString": "&#33;[webdriver.WebDriver](webdriver.WebDriver)",
+    "view": "<ul class=\"pet\">\n <li class=\"dog\">Dog</li>\n <li class=\"cat\">Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Gets the WebDriver ID string representation for this web element.</p>\n<br />See [<code ng-non-bindable>https:&#x2F;&#x2F;github.com&#x2F;SeleniumHQ&#x2F;selenium&#x2F;wiki&#x2F;JsonWireProtocol</code>](https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol)",
+    "example": "// returns the dog web element\nvar dog = element(by.css('.dog')).getWebElement();\nexpect(dog.getId()).not.toBe(undefined);",
+    "fileName": "webdriver",
+    "htmlView": "&lt;ul class=&quot;pet&quot;&gt;\n  &lt;li class=&quot;dog&quot;&gt;Dog&lt;/li&gt;\n  &lt;li class=&quot;cat&quot;&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.WebElement.prototype.getId",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that resolves to this element's JSON representation as defined by the WebDriver wire protocol.",
+      "startingLine": 192,
+      "typeExpression": "!webdriver.promise.Promise.<webdriver.WebElement.Id>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "webdriver.WebElement.Id"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<webdriver.WebElement.Id>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;webdriver.WebElement.Id&gt;",
+    "view": "<ul class=\"pet\">\n  <li class=\"dog\">Dog</li>\n  <li class=\"cat\">Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Returns the raw ID string ID for this element.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebElement.prototype.getRawId",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that resolves to this element's raw ID as a string value.",
+      "startingLine": 202,
+      "typeExpression": "!webdriver.promise.Promise<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise&lt;string&gt;"
+  },
+  {
+    "description": "<p>Returns a promise for the web element&#39;s serialized representation.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebElement.prototype.serialize",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "This instance's serialized wire format.",
+      "startingLine": 211,
+      "typeExpression": "!webdriver.promise.Promise.<webdriver.WebElement.Id>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "webdriver.WebElement.Id"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<webdriver.WebElement.Id>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;webdriver.WebElement.Id&gt;"
+  },
+  {
+    "description": "<p>Use <code ng-non-bindable>ElementFinder.prototype.element</code> instead</p>\n<br />See <code ng-non-bindable>ElementFinder.prototype.element</code>",
+    "fileName": "webdriver",
+    "name": "webdriver.WebElement.prototype.findElement",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "",
+        "startingLine": 221,
+        "typeExpression": "webdriver.Locator",
+        "type": {
+          "type": "NameExpression",
+          "name": "webdriver.Locator"
+        },
+        "typeList": [
+          "webdriver.Locator"
+        ],
+        "name": "subLocator",
+        "paramString": "webdriver.Locator"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "",
+      "startingLine": 223,
+      "typeExpression": "!webdriver.WebElement",
+      "type": {
+        "type": "NameExpression",
+        "name": "webdriver.WebElement",
+        "nullable": false
+      },
+      "typeList": [
+        "webdriver.WebElement"
+      ]
+    },
+    "returnString": "&#33;[webdriver.WebElement](webdriver.WebElement)"
+  },
+  {
+    "description": "<p>Schedules a command to click on this element.</p>\n",
+    "example": "// Clicks on the web link\nelement(by.partialLinkText('Doge')).click();",
+    "fileName": "webdriver",
+    "htmlView": "&lt;ul&gt;\n  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Doge_(meme)&quot;&gt;Doge meme&lt;/a&gt;&lt;/li&gt;\n  &lt;li&gt;Cat&lt;/li&gt;\n&lt;/ul&gt;",
+    "name": "webdriver.WebElement.prototype.click",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved when the click command has completed.",
+      "startingLine": 241,
+      "typeExpression": "!webdriver.promise.Promise.<void>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "void",
+            "reservedWord": true
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<void>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;void&gt;",
+    "view": "<ul>\n  <li><a href=\"https://en.wikipedia.org/wiki/Doge_(meme)\">Doge meme</a></li>\n  <li>Cat</li>\n</ul>"
+  },
+  {
+    "description": "<p>Schedules a command to type a sequence on the DOM element represented by this\ninstance.</p>\n<p>Modifier keys (SHIFT, CONTROL, ALT, META) are stateful; once a modifier is\nprocessed in the keysequence, that key state is toggled until one of the\nfollowing occurs:</p>\n<ul>\n<li>The modifier key is encountered again in the sequence. At this point the\nstate of the key is toggled (along with the appropriate keyup/down events).</li>\n<li><p>The <code ng-non-bindable>webdriver.Key.NULL</code> key is encountered in the sequence. When\nthis key is encountered, all modifier keys current in the down state are\nreleased (with accompanying keyup events). The NULL key can be used to\nsimulate common keyboard shortcuts:</p>\n<pre><code>  element.sendKeys(&quot;text was&quot;,\n                   protractor.Key.CONTROL, &quot;a&quot;, protractor.Key.NULL,\n                   &quot;now text is&quot;);\n  // Alternatively:\n  element.sendKeys(&quot;text was&quot;,\n                   protractor.Key.chord(protractor.Key.CONTROL, &quot;a&quot;),\n                   &quot;now text is&quot;);\n</code></pre></li>\n<li><p>The end of the keysequence is encountered. When there are no more keys\nto type, all depressed modifier keys are released (with accompanying keyup\nevents).</p>\n</li>\n</ul>\n<p>If this element is a file input (<code ng-non-bindable>&lt;input type=\"file\"&gt;</code>), the\nspecified key sequence should specify the path to the file to attach to\nthe element. This is analgous to the user clicking &quot;Browse...&quot; and entering\nthe path into the file select dialog.</p>\n<pre><code>var form = driver.findElement(By.css(&#39;form&#39;));\nvar element = form.findElement(By.css(&#39;input[type=file]&#39;));\nelement.sendKeys(&#39;/path/to/file.txt&#39;);\nform.submit();\n</code></pre><p>For uploads to function correctly, the entered path must reference a file\non the <em>browser&#39;s</em> machine, not the local machine running this script. When\nrunning against a remote Selenium server, a <code ng-non-bindable>webdriver.FileDetector</code>\nmay be used to transparently copy files to the remote machine before\nattempting to upload them in the browser.</p>\n<p><strong>Note:</strong> On browsers where native keyboard events are not supported\n(e.g. Firefox on OS X), key events will be synthesized. Special\npunctionation keys will be synthesized according to a standard QWERTY en-us\nkeyboard layout.</p>\n",
+    "fileName": "webdriver",
+    "name": "webdriver.WebElement.prototype.sendKeys",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The sequence of keys to type. All arguments will be joined into a single sequence.",
+        "startingLine": 295,
+        "typeExpression": "...(string|!webdriver.promise.Promise<string>)",
+        "type": {
+          "type": "TypeUnion",
+          "elements": [
+            {
+              "type": "NameExpression",
+              "name": "string"
+            },
+            {
+              "type": "TypeApplication",
+              "expression": {
+                "type": "NameExpression",
+                "name": "webdriver.promise.Promise"
+              },
+              "applications": [
+                {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              ],
+              "nullable": false
+            }
+          ],
+          "repeatable": true
+        },
+        "typeList": [
+          "string",
+          "!webdriver.promise.Promise.<string>"
+        ],
+        "name": "var_args",
+        "paramString": "...(string&#124;!webdriver.promise.Promise&lt;string&gt;)"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved when all keys have been typed.",
+      "startingLine": 297,
+      "typeExpression": "!webdriver.promise.Promise.<void>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "void",
+            "reservedWord": true
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<void>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;void&gt;"
+  },
+  {
+    "description": "<p>Gets the tag/node name of this element.</p>\n",
+    "example": "expect(element(by.binding('person.name')).getTagName()).toBe('span');",
+    "fileName": "webdriver",
+    "htmlView": "&lt;span&gt;{{person.name}}&lt;/span&gt;",
+    "name": "webdriver.WebElement.prototype.getTagName",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the element's tag name.",
+      "startingLine": 312,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;",
+    "view": "<span>{{person.name}}</span>"
+  },
+  {
+    "description": "<p>Gets the computed style of an element. If the element inherits the named\nstyle from its parent, the parent will be queried for its value. Where\npossible, color values will be converted to their hex representation (e.g.</p>\n<p>#00ff00 instead of rgb(0, 255, 0)).</p>\n<p><em>Warning:</em> the value returned will be as the browser interprets it, so\nit may be tricky to form a proper assertion.</p>\n",
+    "example": "expect(element(by.binding('person.name')).getCssValue().indexOf(\n  'color: #000000')).not.toBe(-1);",
+    "fileName": "webdriver",
+    "htmlView": "&lt;span style='color: #000000'&gt;{{person.name}}&lt;/span&gt;",
+    "name": "webdriver.WebElement.prototype.getCssValue",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The name of the CSS style property to look up.",
+        "startingLine": 334,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "cssStyleProperty",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the requested CSS value.",
+      "startingLine": 336,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;",
+    "view": "<span style='color: #000000'>{{person.name}}</span>"
+  },
+  {
+    "description": "<p>Schedules a command to query for the value of the given attribute of the\nelement. Will return the current value, even if it has been modified after\nthe page has been loaded. More exactly, this method will return the value of\nthe given attribute, unless that attribute is not present, in which case the\nvalue of the property with the same name is returned. If neither value is\nset, null is returned (for example, the &quot;value&quot; property of a textarea\nelement). The &quot;style&quot; attribute is converted as best can be to a\ntext representation with a trailing semi-colon. The following are deemed to\nbe &quot;boolean&quot; attributes and will return either &quot;true&quot; or null:</p>\n<p>async, autofocus, autoplay, checked, compact, complete, controls, declare,\ndefaultchecked, defaultselected, defer, disabled, draggable, ended,\nformnovalidate, hidden, indeterminate, iscontenteditable, ismap, itemscope,\nloop, multiple, muted, nohref, noresize, noshade, novalidate, nowrap, open,\npaused, pubdate, readonly, required, reversed, scoped, seamless, seeking,\nselected, spellcheck, truespeed, willvalidate</p>\n<p>Finally, the following commonly mis-capitalized attribute/property names\nare evaluated as expected:</p>\n<ul>\n<li>&quot;class&quot;</li>\n<li>&quot;readonly&quot;</li>\n</ul>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.getAttribute(class)).toEqual('bar');",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;foo&quot; class=&quot;bar&quot;&gt;&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.getAttribute",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "The name of the attribute to query.",
+        "startingLine": 373,
+        "typeExpression": "string",
+        "type": {
+          "type": "NameExpression",
+          "name": "string"
+        },
+        "typeList": [
+          "string"
+        ],
+        "name": "attributeName",
+        "paramString": "string"
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the attribute's value. The returned value will always be either a string or null.",
+      "startingLine": 374,
+      "typeExpression": "!webdriver.promise.Promise.<?string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string",
+            "nullable": true
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<?string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;?string&gt;",
+    "view": "<div id=\"foo\" class=\"bar\"></div>"
+  },
+  {
+    "description": "<p>Get the visible (i.e. not hidden by CSS) innerText of this element, including\nsub-elements, without any leading or trailing whitespace.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.getText()).toEqual('Inner text');",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;foo&quot; class=&quot;bar&quot;&gt;Inner text&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.getText",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the element's visible text.",
+      "startingLine": 392,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;",
+    "view": "<div id=\"foo\" class=\"bar\">Inner text</div>"
+  },
+  {
+    "description": "<p>Schedules a command to compute the size of this element&#39;s bounding box, in\npixels.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.getSize()).toEqual(jasmine.objectContaining({\n width: 50,\n height: 20\n});",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;foo&quot; style=&quot;width:50px; height: 20px&quot;&gt;\n  Inner text\n&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.getSize",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the element's size as a <code ng-non-bindable>{width:number, height:number</code>} object.",
+      "startingLine": 414,
+      "typeExpression": "!webdriver.promise.Promise.<{width: number, height: number}>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "RecordType",
+            "fields": [
+              {
+                "type": "FieldType",
+                "key": {
+                  "type": "NameExpression",
+                  "name": "width"
+                },
+                "value": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              {
+                "type": "FieldType",
+                "key": {
+                  "type": "NameExpression",
+                  "name": "height"
+                },
+                "value": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              }
+            ]
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<{width: number, height: number}>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;{width: number, height: number}&gt;",
+    "view": "<div id=\"foo\" style=\"width:50px; height: 20px\">\n  Inner text\n</div>"
+  },
+  {
+    "description": "<p>Schedules a command to compute the location of this element in page space.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.getLocation()).toEqual(jasmine.objectContaining({\n x: 15,\n y: 20\n});",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;foo&quot; style=&quot;position: absolute; top:20px; left: 15px&quot;&gt;\n  Inner text\n&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.getLocation",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved to the element's location as a <code ng-non-bindable>{x:number, y:number</code>} object.",
+      "startingLine": 436,
+      "typeExpression": "!webdriver.promise.Promise.<{x: number, y: number}>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "RecordType",
+            "fields": [
+              {
+                "type": "FieldType",
+                "key": {
+                  "type": "NameExpression",
+                  "name": "x"
+                },
+                "value": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              },
+              {
+                "type": "FieldType",
+                "key": {
+                  "type": "NameExpression",
+                  "name": "y"
+                },
+                "value": {
+                  "type": "NameExpression",
+                  "name": "number"
+                }
+              }
+            ]
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<{x: number, y: number}>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;{x: number, y: number}&gt;",
+    "view": "<div id=\"foo\" style=\"position: absolute; top:20px; left: 15px\">\n  Inner text\n</div>"
+  },
+  {
+    "description": "<p>Schedules a command to query whether the DOM element represented by this\ninstance is enabled, as dicted by the <code ng-non-bindable>disabled</code> attribute.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.isEnabled()).toBe(false);",
+    "fileName": "webdriver",
+    "htmlView": "&lt;input id=&quot;foo&quot; disabled=true&gt;",
+    "name": "webdriver.WebElement.prototype.isEnabled",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with whether this element is currently enabled.",
+      "startingLine": 454,
+      "typeExpression": "!webdriver.promise.Promise.<boolean>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<boolean>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;boolean&gt;",
+    "view": "<input id=\"foo\" disabled=true>"
+  },
+  {
+    "description": "<p>Schedules a command to query whether this element is selected.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.isSelected()).toBe(false);\nfoo.click();\nexpect(foo.isSelected()).toBe(true);",
+    "fileName": "webdriver",
+    "htmlView": "&lt;input id=&quot;foo&quot; type=&quot;checkbox&quot;&gt;",
+    "name": "webdriver.WebElement.prototype.isSelected",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with whether this element is currently selected.",
+      "startingLine": 472,
+      "typeExpression": "!webdriver.promise.Promise.<boolean>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<boolean>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;boolean&gt;",
+    "view": "<input id=\"foo\" type=\"checkbox\">"
+  },
+  {
+    "description": "<p>Schedules a command to submit the form containing this element (or this\nelement if it is a FORM element). This command is a no-op if the element is\nnot contained in a form.</p>\n",
+    "example": "var login_form = element(by.id('login'));\nlogin_form.submit();",
+    "fileName": "webdriver",
+    "htmlView": "&lt;form id=&quot;login&quot;&gt;\n  &lt;input name=&quot;user&quot;&gt;\n&lt;/form&gt;",
+    "name": "webdriver.WebElement.prototype.submit",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved when the form has been submitted.",
+      "startingLine": 492,
+      "typeExpression": "!webdriver.promise.Promise.<void>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "void",
+            "reservedWord": true
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<void>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;void&gt;",
+    "view": "<form id=\"login\">\n  <input name=\"user\">\n</form>"
+  },
+  {
+    "description": "<p>Schedules a command to clear the <code ng-non-bindable>value</code> of this element. This command\nhas no effect if the underlying DOM element is neither a text INPUT element\nnor a TEXTAREA element.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.getAttribute('value')).toEqual('Default Text');\nfoo.clear();\nexpect(foo.getAttribute('value')).toEqual('');",
+    "fileName": "webdriver",
+    "htmlView": "&lt;input id=&quot;foo&quot; value=&quot;Default Text&quot;&gt;",
+    "name": "webdriver.WebElement.prototype.clear",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved when the element has been cleared.",
+      "startingLine": 512,
+      "typeExpression": "!webdriver.promise.Promise.<void>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "void",
+            "reservedWord": true
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<void>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;void&gt;",
+    "view": "<input id=\"foo\" value=\"Default Text\">"
+  },
+  {
+    "description": "<p>Schedules a command to test whether this element is currently displayed.</p>\n",
+    "example": "var foo = element(by.id('foo'));\nexpect(foo.isDisplayed()).toBe(false);",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;foo&quot; style=&quot;visibility:hidden&quot;&gt;",
+    "name": "webdriver.WebElement.prototype.isDisplayed",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with whether this element is currently visible on the page.",
+      "startingLine": 528,
+      "typeExpression": "!webdriver.promise.Promise.<boolean>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "boolean"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<boolean>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;boolean&gt;",
+    "view": "<div id=\"foo\" style=\"visibility:hidden\">"
+  },
+  {
+    "description": "<p>Take a screenshot of the visible region encompassed by this element&#39;s\nbounding rectangle.</p>\n",
+    "example": "function writeScreenShot(data, filename) {\n  var stream = fs.createWriteStream(filename);\n  stream.write(new Buffer(data, 'base64'));\n  stream.end();\n}\nvar foo = element(by.id('foo'));\nfoo.takeScreenshot().then((png) => {\n  writeScreenShot(png, 'foo.png');\n});\n\nNote that this is a new feature in WebDriver and may not be supported by\nyour browser's driver. It isn't yet supported in Chromedriver as of 2.21.",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;foo&quot;&gt;Inner Text&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.takeScreenshot",
+    "params": [
+      {
+        "tagDef": {
+          "name": "param",
+          "multi": true,
+          "docProperty": "params",
+          "transforms": [
+            null,
+            null,
+            null
+          ]
+        },
+        "tagName": "param",
+        "description": "Optional argument that indicates whether the element should be scrolled into view before taking a screenshot. Defaults to false.",
+        "startingLine": 555,
+        "typeExpression": "boolean=",
+        "type": {
+          "type": "NameExpression",
+          "name": "boolean",
+          "optional": true
+        },
+        "typeList": [
+          "boolean"
+        ],
+        "optional": true,
+        "name": "opt_scroll",
+        "paramString": "boolean="
+      }
+    ],
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved to the screenshot as a base-64 encoded PNG.",
+      "startingLine": 558,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;",
+    "view": "<div id=\"foo\">Inner Text</div>"
+  },
+  {
+    "description": "<p>Schedules a command to retrieve the outer HTML of this element.</p>\n",
+    "example": "var child = element(by.id('child'));\nexpect(child.getOuterHtml()).toContain(\n    '&lt;div id=\"child\"&gt;Text&lt;/div&gt;');",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;parent&quot;&gt;\n  &lt;div id=&quot;child&quot;&gt;Text&lt;/div&gt;\n&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.getOuterHtml",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the element's outer HTML.",
+      "startingLine": 577,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;",
+    "view": "<div id=\"parent\">\n  <div id=\"child\">Text</div>\n</div>"
+  },
+  {
+    "description": "<p>Schedules a command to retrieve the inner HTML of this element.</p>\n",
+    "example": "var parent = element(by.id('parent'));\nexpect(parent.getInnerHtml()).toContain(\n    '&lt;div id=\"child\"&gt;Text&lt;/div&gt;');",
+    "fileName": "webdriver",
+    "htmlView": "&lt;div id=&quot;parent&quot;&gt;\n  &lt;div id=&quot;child&quot;&gt;Text&lt;/div&gt;\n&lt;/div&gt;",
+    "name": "webdriver.WebElement.prototype.getInnerHtml",
+    "returns": {
+      "tagDef": {
+        "name": "returns",
+        "aliases": [
+          "return"
+        ],
+        "transforms": [
+          null,
+          null
+        ]
+      },
+      "tagName": "return",
+      "description": "A promise that will be resolved with the element's inner HTML.",
+      "startingLine": 596,
+      "typeExpression": "!webdriver.promise.Promise.<string>",
+      "type": {
+        "type": "TypeApplication",
+        "expression": {
+          "type": "NameExpression",
+          "name": "webdriver.promise.Promise"
+        },
+        "applications": [
+          {
+            "type": "NameExpression",
+            "name": "string"
+          }
+        ],
+        "nullable": false
+      },
+      "typeList": [
+        "!webdriver.promise.Promise.<string>"
+      ]
+    },
+    "returnString": "!webdriver.promise.Promise.&lt;string&gt;",
+    "view": "<div id=\"parent\">\n  <div id=\"child\">Text</div>\n</div>"
+  }
+]
+}
